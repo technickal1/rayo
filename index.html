@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-LD Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h2>JSON-LD Generator</h2>
+        <label for="articleName">Article Name:</label>
+        <input type="text" id="articleName">
+        <br><br>
+        <label for="authorName">Author Name:</label>
+        <input type="text" id="authorName">
+        <br><br>
+        <button onclick="generateJsonLd()">Generate JSON-LD</button>
+        <br><br>
+        <textarea id="output" rows="10" cols="50" readonly></textarea>
+    </div>
+
+    <script>
+        function generateJsonLd() {
+            const articleName = document.getElementById('articleName').value;
+            const authorName = document.getElementById('authorName').value;
+
+            const jsonLd = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "name": articleName,
+                "author": {
+                    "@type": "Person",
+                    "name": authorName
+                }
+            };
+
+            document.getElementById('output').value = JSON.stringify(jsonLd, null, 2);
+        }
+    </script>
+</body>
+</html>
