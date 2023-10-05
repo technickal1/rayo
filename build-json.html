@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Blog with Metadata Sidebar</title>
+    <style>
+        /* Basic styles for layout */
+        .container {
+            display: flex;
+        }
+        .blog-content {
+            flex: 2;
+            padding: 20px;
+        }
+        .metadata-sidebar {
+            flex: 1;
+            padding: 20px;
+            border-left: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Blog Content -->
+    <div class="blog-content">
+        <h1 id="blogTitle">Why JSON-LD is Important</h1>
+        <p id="blogDescription">JSON-LD is a lightweight Linked Data format. It is easy for humans to read and write.</p>
+        <!-- Add more content as needed -->
+    </div>
+
+    <!-- Metadata Sidebar -->
+    <div class="metadata-sidebar">
+        <h3>Metadata</h3>
+        <strong>JSON-LD:</strong>
+        <pre id="jsonLdOutput"></pre>
+        <strong>Canonical URL:</strong>
+        <p id="canonicalUrl">https://example.com/blog/json-ld</p>
+        <!-- Add more metadata features as needed -->
+    </div>
+</div>
+
+<script>
+    // Dynamically generate JSON-LD based on blog content
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": document.getElementById('blogTitle').innerText,
+        "description": document.getElementById('blogDescription').innerText,
+        "author": {
+            "@type": "Person",
+            "name": "John Doe" // Replace with dynamic data if available
+        },
+        // ... add more properties as needed
+    };
+
+    // Display JSON-LD in the metadata sidebar
+    document.getElementById('jsonLdOutput').innerText = JSON.stringify(jsonLd, null, 2);
+
+    // Append the JSON-LD script to the head of the document
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+</script>
+
+</body>
+</html>
