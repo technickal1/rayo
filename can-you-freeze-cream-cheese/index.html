@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Can You Freeze Cream Cheese?</title>
-    <script type="module" src="/main.js"></script>
 </head>
 
 <body>
     <!-- Table of Contents container -->
-    <aside class="toc-container"></aside>
+    <p>Tap or click the contents</p>    
+    <div id="toc"></div>
 
     <!-- Blog content -->
+    <div id="content">
     <p>Cream cheese is one of those delightful kitchen staples that can elevate a dish from good to great. Whether
         you're spreading it on a bagel or using it as a key ingredient in a cheesecake, its creamy texture and tangy
         flavor are hard to resist. But let's say you've stumbled upon a sale and stocked up, or maybe you just can't get
@@ -96,7 +97,21 @@
             casseroles, sauces, or baked goods.</p>
 
     </section>
+    </div>
 
 </body>
+<script type="module">
+    import { TableOfContents, FAQJsonLd } from '/blogComponents.js';
+
+    // Use Table of Contents
+    const toc = new TableOfContents('#content', '#toc');
+    toc.generate();
+
+    // Use FAQ JSON-LD
+    const faq = new FAQJsonLd();
+    faq.parseFromContent('.faq-section');
+    faq.embed();
+</script>
+
 
 </html>
