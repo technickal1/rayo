@@ -1,0 +1,32 @@
+<!-- toc.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of Contents Example</title>
+</head>
+<body>
+
+<p>Tap or click the contents</p>    
+<div id="toc"></div>
+
+<div id="content">
+    <h1>Main Title</h1>
+    <p>Some content here...</p>
+    <h2>Subheading 1</h2>
+    <p>More content...</p>
+    <h2>Subheading 2</h2>
+    <p>Even more content...</p>
+</div>
+
+
+<script src="tableOfContents.js"></script>
+<script>
+    const toc = new TableOfContents('#content', '#toc');
+    toc.generate();
+</script>
+
+</body>
+</html>
